@@ -13,10 +13,10 @@ const userController = {
 
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
       
-      res.status(201).json({ user, token });
+      return res.status(201).json({ user, token });
     } catch (error) {
       logger.error('Registration error:', error);
-      res.status(400).json({ error: 'Registration failed' });
+      return res.status(400).json({ error: 'Registration failed' });
     }
   },
 
