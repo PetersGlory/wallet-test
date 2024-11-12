@@ -16,3 +16,6 @@
 {"level":"info","message":"Database connected successfully","timestamp":"2024-11-12T22:16:18.352Z"}
 {"level":"info","message":"Server is running on port 3000","timestamp":"2024-11-12T22:16:18.389Z"}
 {"level":"info","message":"API Documentation available at http://localhost:3000/api-docs","timestamp":"2024-11-12T22:16:18.392Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2024-11-12T22:17:09.453Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2024-11-12T22:17:09.472Z"}
+{"level":"info","message":"API Documentation available at http://localhost:3000/api-docs","timestamp":"2024-11-12T22:17:09.473Z"}
