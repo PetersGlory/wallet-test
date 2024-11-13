@@ -2,10 +2,10 @@
   "name": "wallet-management-system",
   "version": "1.0.0",
   "description": "Digital wallet system with PayPal integration",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "jest"
   },
   "dependencies": {

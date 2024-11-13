@@ -13,6 +13,10 @@ const swaggerOptions = {
         url: 'https://wallet-test-rbp6.onrender.com',
         description: 'Development server',
       },
+      {
+        url: 'http://localhost:9000',
+        description: 'Local server',
+      },
     ],
     components: {
       securitySchemes: {

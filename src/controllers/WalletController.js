@@ -19,6 +19,7 @@ const walletController = {
   async createPayPalOrder(req, res) {
     try {
       const { amount } = req.body;
+      const wallet = await Wallet.findOne({ where: { userId: req.user.id } });
       
       // Validate amount
       if (!amount || isNaN(amount) || amount <= 0) {
@@ -51,10 +52,12 @@ const walletController = {
       });
 
       const order = await paypalClient.execute(request);
+
+      console.log(order)
       
       // Store order details in database for tracking (optional but recommended)
       await Transaction.create({
-        walletId: req.user.wallet.id, // Assuming you have wallet info in req.user
+        walletId: wallet.id, // Assuming you have wallet info in req.user
         type: 'DEPOSIT',
         amount: formattedAmount,
         status: 'PENDING',
@@ -98,6 +101,8 @@ const walletController = {
       const request = new paypal.orders.OrdersCaptureRequest(orderId);
       const capture = await paypalClient.execute(request);
 
+      console.log(capture)
+
       const amount = parseFloat(capture.result.purchase_units[0].payments.captures[0].amount.value);
 
       await Transaction.create({
@@ -112,13 +117,13 @@ const walletController = {
       wallet.balance = parseFloat(wallet.balance) + amount;
       await wallet.save();
 
-      res.json({ 
+      return res.json({ 
         message: 'Wallet funded successfully',
         newBalance: wallet.balance
       });
     } catch (error) {
       logger.error('Wallet funding error:', error);
-      res.status(500).json({ error: 'Failed to fund wallet' });
+      return res.status(500).json({ error: 'Failed to fund wallet' });
     }
   },
 
@@ -142,13 +147,13 @@ const walletController = {
       wallet.balance = parseFloat(wallet.balance) - parseFloat(amount);
       await wallet.save();
 
-      res.json({ 
+      return res.json({ 
         message: 'Withdrawal successful',
         newBalance: wallet.balance
       });
     } catch (error) {
       logger.error('Withdrawal error:', error);
-      res.status(500).json({ error: 'Failed to process withdrawal' });
+      return res.status(500).json({ error: 'Failed to process withdrawal' });
     }
   },
 
