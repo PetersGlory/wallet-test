@@ -17,12 +17,35 @@ const router = express.Router();
  */
 router.get('/balance', auth, walletController.getBalance);
 
+// /**
+//  * @swagger
+//  * /api/wallet/create-order:
+//  *   post:
+//  *     tags: [Wallet]
+//  *     summary: Create PayPal order for wallet funding
+//  *     security:
+//  *       - bearerAuth: []
+//  *     requestBody:
+//  *       required: true
+//  *       content:
+//  *         application/json:
+//  *           schema:
+//  *             type: object
+//  *             required:
+//  *               - amount
+//  *             properties:
+//  *               amount:
+//  *                 type: number
+//  */
+
+
 /**
  * @swagger
  * /api/wallet/create-order:
  *   post:
- *     tags: [Wallet]
+ *     tags: [PayPal Payments]
  *     summary: Create PayPal order for wallet funding
+ *     description: Creates a new PayPal order and stores the transaction details in the database
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -36,6 +59,80 @@ router.get('/balance', auth, walletController.getBalance);
  *             properties:
  *               amount:
  *                 type: number
+ *                 format: float
+ *                 description: Amount to be charged in USD
+ *                 example: 100.00
+ *     responses:
+ *       200:
+ *         description: Order created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 orderId:
+ *                   type: string
+ *                   description: PayPal order ID
+ *                   example: "5O190127TN364715T"
+ *                 status:
+ *                   type: string
+ *                   description: Current status of the order
+ *                   example: "CREATED"
+ *                 links:
+ *                   type: array
+ *                   description: HATEOAS links for order actions
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       href:
+ *                         type: string
+ *                         example: "https://api.paypal.com/v2/checkout/orders/5O190127TN364715T"
+ *                       rel:
+ *                         type: string
+ *                         example: "self"
+ *                       method:
+ *                         type: string
+ *                         example: "GET"
+ *       400:
+ *         description: Invalid request parameters
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Invalid amount. Please provide a valid positive number."
+ *       401:
+ *         description: Unauthorized - Invalid or missing authentication token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Unauthorized access"
+ *       503:
+ *         description: Payment service temporarily unavailable
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Payment service temporarily unavailable. Please try again later."
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Failed to create PayPal order. Please try again later."
  */
 router.post('/create-order', auth, walletController.createPayPalOrder);
 
