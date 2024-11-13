@@ -43,7 +43,7 @@ router.get('/balance', auth, walletController.getBalance);
  * @swagger
  * /api/wallet/create-order:
  *   post:
- *     tags: [PayPal Payments]
+ *     tags: [Wallet]
  *     summary: Create PayPal order for wallet funding
  *     description: Creates a new PayPal order and stores the transaction details in the database
  *     security:
