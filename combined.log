@@ -105,3 +105,20 @@
 {"level":"info","message":"API Documentation available at http://localhost:9000/api-docs","timestamp":"2024-11-13T10:42:40.857Z"}
 {"level":"info","message":"Database connected successfully","timestamp":"2024-11-13T10:42:41.166Z"}
 {"level":"error","message":"Wallet funding error:","timestamp":"2024-11-13T10:43:48.107Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2024-11-13T10:52:47.393Z"}
+{"level":"info","message":"Server is running on port 9000","timestamp":"2024-11-13T10:52:47.405Z"}
+{"level":"info","message":"API Documentation available at http://localhost:9000/api-docs","timestamp":"2024-11-13T10:52:47.406Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2024-11-13T10:54:35.623Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2024-11-13T10:55:02.101Z"}
+{"level":"info","message":"Server is running on port 9000","timestamp":"2024-11-13T10:55:02.111Z"}
+{"level":"info","message":"API Documentation available at http://localhost:9000/api-docs","timestamp":"2024-11-13T10:55:02.112Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2024-11-13T10:55:02.462Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2024-11-13T10:57:16.228Z"}
+{"level":"info","message":"Server is running on port 9000","timestamp":"2024-11-13T10:57:16.240Z"}
+{"level":"info","message":"API Documentation available at http://localhost:9000/api-docs","timestamp":"2024-11-13T10:57:16.242Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2024-11-13T10:59:53.252Z"}
+{"level":"info","message":"Server is running on port 9000","timestamp":"2024-11-13T10:59:53.263Z"}
+{"level":"info","message":"API Documentation available at http://localhost:9000/api-docs","timestamp":"2024-11-13T10:59:53.264Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2024-11-13T11:01:32.133Z"}
+{"level":"info","message":"Server is running on port 9000","timestamp":"2024-11-13T11:01:32.144Z"}
+{"level":"info","message":"API Documentation available at http://localhost:9000/api-docs","timestamp":"2024-11-13T11:01:32.145Z"}

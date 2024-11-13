@@ -101,8 +101,6 @@ const walletController = {
       const request = new paypal.orders.OrdersCaptureRequest(orderId);
       const capture = await paypalClient.execute(request);
 
-      console.log(capture)
-
       const amount = parseFloat(capture.result.purchase_units[0].payments.captures[0].amount.value);
 
       await Transaction.create({
