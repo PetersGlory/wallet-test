@@ -24,15 +24,15 @@ const userController = {
   async login(req, res) {
     try {
       const { email, password } = req.body;
-      const user = await User.findOne({ where: { email } });
+      const user = await User.findOne({ where: { email: email } });
       
       if (!user || !(await user.comparePassword(password))) {
-        throw new Error('Invalid credentials');
+        return res.status(401).json({ error: 'Invalid credentials' });
       }
 
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
       
-      res.json({ user, token });
+      return res.json({ user, token });
     } catch (error) {
       logger.error('Login error:', error);
       res.status(401).json({ error: 'Invalid credentials' });
